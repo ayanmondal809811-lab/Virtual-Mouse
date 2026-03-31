@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultra-Precision Virtual Mouse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-effects">
+        <div class="neural-grid"></div>
+        <div class="floating-particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="logo-glow"></div>
+            <h1 class="logo">VIRTUAL MOUSE</h1>
+            <span class="version">Ultra-Precision Edition</span>
+        </div>
+        <div class="status-indicator">
+            <div class="status-dot" id="connectionStatus"></div>
+            <span id="connectionText">Connecting...</span>
+        </div>
+    </header>
+
+    <!-- Main Control Interface -->
+    <main class="main-container">
+        <!-- Touch Control Area -->
+        <div class="control-panel">
+            <div class="touchpad-container">
+                <div class="touchpad-frame">
+                    <div class="precision-grid"></div>
+                    <div class="touchpad" id="touchpad">
+                        <div class="cursor-indicator" id="cursorIndicator"></div>
+                        <div class="gesture-trails" id="gestureTrails"></div>
+                        
+                        <!-- Precision Zones -->
+                        <div class="precision-zones">
+                            <div class="zone high-precision" data-multiplier="0.3"></div>
+                            <div class="zone medium-precision" data-multiplier="0.6"></div>
+                            <div class="zone normal-precision" data-multiplier="1.0"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Touch Visual Feedback -->
+                    <div class="touch-feedback" id="touchFeedback"></div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="button-controls">
+                    <button class="control-btn left-click" id="leftClick" data-action="left">
+                        <div class="btn-glow"></div>
+                        <span class="btn-text">L</span>
+                        <div class="click-ripple"></div>
+                    </button>
+                    
+                    <div class="scroll-zone" id="scrollZone">
+                        <div class="scroll-indicator"></div>
+                        <span class="scroll-text">SCROLL</span>
+                        <div class="scroll-waves"></div>
+                    </div>
+                    
+                    <button class="control-btn right-click" id="rightClick" data-action="right">
+                        <div class="btn-glow"></div>
+                        <span class="btn-text">R</span>
+                        <div class="click-ripple"></div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Precision Controls -->
+            <div class="precision-controls">
+                <div class="control-group">
+                    <label class="control-label">Sensitivity</label>
+                    <div class="slider-container">
+                        <input type="range" id="sensitivitySlider" min="0.1" max="10" step="0.1" value="2.5" class="precision-slider">
+                        <div class="slider-track"></div>
+                        <div class="slider-thumb"></div>
+                    </div>
+                    <span class="value-display" id="sensitivityValue">2.5x</span>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label">Precision Mode</label>
+                    <div class="toggle-switch" id="precisionToggle">
+                        <div class="toggle-slider"></div>
+                        <div class="toggle-labels">
+                            <span class="off">SPEED</span>
+                            <span class="on">PRECISION</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Stats -->
+        <aside class="stats-panel">
+            <div class="stats-header">
+                <h3>Performance Metrics</h3>
+                <div class="stats-toggle" id="statsToggle">
+                    <div class="toggle-dot"></div>
+                </div>
+            </div>
+            
+            <div class="stats-content" id="statsContent">
+                <div class="stat-item">
+                    <span class="stat-label">Latency</span>
+                    <span class="stat-value" id="latencyValue">0ms</span>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="latencyBar"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">Accuracy</span>
+                    <span class="stat-value" id="accuracyValue">100%</span>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="accuracyBar" style="width: 100%;"></div>
+                    </div>
+                </div>
+                
+                <div class="stat-item">
+                    <span class="stat-label">Smoothness</span>
+                    <span class="stat-value" id="smoothnessValue">95%</span>
+                    <div class="stat-bar">
+                        <div class="stat-fill" id="smoothnessBar" style="width: 95%;"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-animation">
+            <div class="loading-rings">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+            </div>
+            <p class="loading-text">Initializing Ultra-Precision Systems...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
